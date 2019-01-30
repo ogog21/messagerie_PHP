@@ -1,0 +1,32 @@
+#main {
+    border: 1px solid black;
+    width: 500px;
+    height: 510px;
+    padding:10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: antiquewhite;
+}
+#envoie {
+    border: 1px solid black;
+    width: 400px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    padding:10px;
+    background-color: rgb(255, 249, 242);
+}
+#message {
+    max-width: 150px;
+    max-height: 50px;
+}
+#post {
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 400px;
+    height: 320px;
+}
