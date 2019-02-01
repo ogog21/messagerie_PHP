@@ -26,11 +26,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Messagerie</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 <body>
-    <h1 style='text-align:center;'>Chat en PHP (Ajouter du AJAX svp)</h1>
+    <h1 style='text-align:center;'>Chat en PHP w/ jQuery</h1>
     <div id="main">
         <form method='POST' action=''><input type='submit' name='clear' value='Clear' id='clear_button'></form>
     <p style='margin-left:50px;'><u>Messages postés :</u></p>
@@ -51,5 +52,11 @@
             </form>
         <div>
     </div>
+    <script>
+        setInterval('load_messages()',500);
+        function load_messages(){
+            $('#post').load('load_messages.php');
+        }
+    </script>
 </body>
 </html>
