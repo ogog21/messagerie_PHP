@@ -1,7 +1,7 @@
 #main {
     border: 1px solid black;
     width: 500px;
-    height: 510px;
+    height: 550px;
     padding:10px;
     margin-left: auto;
     margin-right: auto;
@@ -11,7 +11,7 @@
 #envoie {
     border: 1px solid black;
     width: 400px;
-    height: 100px;
+    height: 140px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1%;
@@ -21,6 +21,8 @@
 #message {
     max-width: 150px;
     max-height: 50px;
+    min-width: 150px;
+    min-height: 50px;
 }
 #post {
     border: 1px solid black;
@@ -29,4 +31,12 @@
     background-color: white;
     width: 400px;
     height: 320px;
+}
+label
+{
+	display: block;
+}
+#clear_button {
+    display: block;
+    float: right;
 }
