@@ -40,3 +40,19 @@ label
     display: block;
     float: right;
 }
+#block_actu {
+    display: block;
+    border : 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    max-width: 200px;
+    background-color: rgb(252, 245, 236);
+}
+#actu{
+    border : 1px solid black;
+    text-align: center;
+    color: black;
+    background-color: antiquewhite;
+}
