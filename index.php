@@ -31,7 +31,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 <body>
-    
     <div id='block_actu'>
         <p id='actu'>Actu de la page</p>
         <?php
@@ -46,32 +45,34 @@
             }
         ?>
     </div>
-    <h1 style='text-align:center;'>Chat en PHP w/ jQuery</h1>
-    <div id="main">
-        <form method='POST' action=''><input type='submit' name='clear' value='Clear' id='clear_button'></form>
-        <p style='margin-left:50px;'><u>Messages postés :</u></p>
-        <div id="post">
-            <?php
-                $bdd = new PDO('mysql:host=localhost;dbname=entrainement','root','password');
-                $PrepAffMSG = $bdd->query('SELECT * FROM messagerie ORDER BY id DESC LIMIT 0,17');
-                while($affMSG = $PrepAffMSG->fetch()){
-                    echo '<b>'.$affMSG['pseudo']. '</b>: '.$affMSG['message']. '<br />';
-                }
-            ?>
+    <div id='main'>
+        <h1 style='text-align:center;'>Chat en PHP w/ jQuery</h1>
+            <form method='POST' action='' id='clear_button'><input type='submit' name='clear' value='Clear'></form>
+            <div id="Message">
+                <?php
+                    $bdd = new PDO('mysql:host=localhost;dbname=entrainement','root','password');
+                    $PrepAffMSG = $bdd->query('SELECT * FROM messagerie ORDER BY id ASC');
+                    while($affMSG = $PrepAffMSG->fetch()){
+                        echo '<b>'.$affMSG['pseudo']. '</b>: '.$affMSG['message']. '<br />';
+                    }
+                ?>
+            </div>
+            <div id='Envoie'>
+                <form method='POST' action='' id='input_center'>
+                    <label>Pseudo :</label><input type='text' placeholder='Votre pseudo' name='pseudo' value="<?php if(isset($pseudosecure)){echo $pseudosecure;}?>" ><br />
+                    <label>Votre messages :</label><textarea name='message' placeholder='Votre message' id="Textarea"></textarea><br />
+                    <input type='submit' name="envoie" value="Envoyer">
+                </form>
+            </div>
         </div>
-        <div id='envoie'>
-            <form method='POST' action='' id='input_center'>
-                <label>Pseudo :</label><input type='text' placeholder='votre pseudo' name='pseudo' value="<?php if(isset($pseudosecure)){echo $pseudosecure;}?>" ><br />
-                <label>Votre messages :</label><textarea name='message' placeholder='votre message' id="message"></textarea><br />
-                <input type='submit' name="envoie" value="Envoyer">
-            </form>
-        <div>
-    </div>
     <script>
         setInterval('load_messages()',500);
         function load_messages(){
-            $('#post').load('load_messages.php');
+            $('#Message').load('load_messages.php');
+            element = document.getElementById('#Message');
+            element.scrollTop = element.scrollHeight;
         }
+        
     </script>
 </body>
 </html>
