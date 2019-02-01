@@ -31,6 +31,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 <body>
+    <a href='myberry3.ddns.net/projet/' id='back'><< Retour</a>
+    <br />
     <div id='block_actu'>
         <p id='actu'>Actu de la page</p>
         <?php
