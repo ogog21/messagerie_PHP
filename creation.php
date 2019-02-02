@@ -12,6 +12,7 @@
                 $req = $bdd->prepare('INSERT INTO compte(identifiant,motdepasse) VALUES(?,?)');
                 if($req){
                     $req->execute(array($identifiant,$crypt_motdepasse));
+                    echo 'Compte créé avec succès !';
                 }else {
                     echo 'Probleme de preparation de la requete';
                 }
@@ -33,18 +34,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Création compte</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/creation.css" />
     <script src="main.js"></script>
 </head>
 <body>
-    <br /><br /><br /><br /><br />
-    <form method='POST' action=''>
-        <label>Identifiant :</label><input type="text" name="identifiant"><br /><br />
-        <label>Confirmer votre identifiant :</label><input type="text" name="confirm_identifiant"><br /><br />
-        <label >Mot de passe :</label><input type="password" name="motdepasse"><br /><br />
-        <label >Confirmer votre mot de passe :</label><input type="password" name="confirm_motdepasse"><br /><br />
-        <input type="submit" value="Créer mon compte">
-    </form>
-    <a href='index.php'>Vers connexion.php</a>
+    <div id='main'>
+        <h3 style='text-align:center'>Création de compte</h3>
+        <div id='formulaire'>
+            <form method='POST' action=''>
+                <label for='identifiant'>Identifiant :</label><input type="text" name="identifiant"><br /><br />
+                <label for='confirm_identifiant'>Confirmer votre identifiant :</label><input type="text" name="confirm_identifiant"><br /><br />
+                <label for='motdepasse'>Mot de passe :</label><input type="password" name="motdepasse"><br /><br />
+                <label for='confirm_motdepasse'>Confirmer votre mot de passe :</label><input type="password" name="confirm_motdepasse"><br /><br />
+                <input type="submit" value="Créer mon compte" id='creer_mon_compte'>
+            </form>
+            <a href='index.php' id='vers_connexion'>Vers Connexion</a>
+        </div>
+    </div>
 </body>
 </html>

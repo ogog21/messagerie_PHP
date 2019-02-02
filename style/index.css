@@ -1,0 +1,47 @@
+#main {
+    border: 1px solid blanchedalmond;
+    box-shadow: 2px 2px 2px 1px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 300px;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    margin-top: 7%;
+}
+#formulaire {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    text-align: center;
+}
+label {
+    width: 120px;
+    display: block;
+    float: left;
+}
+#connexion {
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    float: right;
+    margin-top:30px;
+}
+.creation_deconnexion {
+    float: left;
+    margin-top:15px;
+}
+#to_messagerie {
+    float: right;
+    margin-top: 30px;
+}
+#welcome_user {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#connect {
+    text-align: center;
+    margin-top:70px;
+}

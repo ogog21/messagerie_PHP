@@ -1,0 +1,36 @@
+#main {
+    border: 1px solid blanchedalmond;
+    box-shadow: 2px 2px 2px 1px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 350px;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    margin-top: 7%;
+}
+#formulaire {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+label {
+    width: 200px;
+    display: block;
+    float: left;
+    margin-left: 15px;
+}
+#creer_mon_compte {
+    border-radius: 10px;
+    width: 140px;
+    height: 30px;
+    float: right;
+    margin-top:30px;
+}
+#vers_connexion {
+    float: left;
+    margin-top:18px;
+    margin-left: 25px;
+}

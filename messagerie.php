@@ -1,4 +1,5 @@
 <?php
+session_start();
     $bdd = new PDO('mysql:host=localhost;dbname=projet_chat','root','password');
     if($bdd){
         $infoBD = 'Base de donnée connecté <br />';
@@ -9,7 +10,7 @@
         $messages = htmlspecialchars($_POST['message']);
         $pseudosecure = htmlspecialchars($_POST['pseudo']);
 
-        $insterMSG = $bdd->prepare('INSERT INTO compte(pseudo, message) VALUES(?,?)');
+        $insterMSG = $bdd->prepare('INSERT INTO messagerie(pseudo, message) VALUES(?,?)');
         $insterMSG->execute(array($pseudosecure,$messages));
         $Rchamp = 'Message envoyé avec succès <br />';
     }else{
@@ -28,10 +29,10 @@
     <title>Messagerie</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/messagerie.css" />
 </head>
 <body>
-    <a href='http://myberry3.ddns.net/projet/' id='back'><< Retour</a>
+    <a href='deconnexion.php' id='back'><< Se Déconnecter</a>
     <div id='block_actu'>
         <p id='actu'>Actu de la page</p>
         <?php
@@ -51,19 +52,30 @@
             <form method='POST' action='' id='clear_button'><input type='submit' name='clear' value='Clear'></form>
             <div id="Message">
                 <?php
-                    $PrepAffMSG = $bdd->query('SELECT * FROM compte ORDER BY id ASC');
+                    $PrepAffMSG = $bdd->query('SELECT * FROM messagerie ORDER BY id ASC');
                     while($affMSG = $PrepAffMSG->fetch()){
                         echo '<b>'.$affMSG['pseudo']. '</b>: '.$affMSG['message']. '<br />';
                     }
                 ?>
             </div>
+            <?php
+                if(isset($_SESSION['identifiant'])){
+            ?>
             <div id='Envoie'>
                 <form method='POST' action='' id='input_center'>
-                    <label>Pseudo :</label><input type='text' placeholder='Votre pseudo' name='pseudo' value="<?php if(isset($pseudosecure)){echo $pseudosecure;}?>" ><br />
+                    <label>Pseudo :</label><input type='text' placeholder='Votre pseudo' name='pseudo' readonly value="<?php if(isset($_SESSION['identifiant'])){echo $_SESSION['identifiant'];}?>"><br />
                     <label>Votre messages :</label><textarea name='message' placeholder='Votre message' id="Textarea"></textarea><br />
                     <input type='submit' name="envoie" value="Envoyer">
                 </form>
             </div>
+            <?php
+                }else{
+                    echo '<div id="need_connect">Vous devez être connecté pour envoyer des messages !
+                    <br />
+                    <a href="index.php">Se connecter</a>
+                    </div>';
+                }
+            ?>
         </div>
     <script>
         setInterval('load_messages()',500);

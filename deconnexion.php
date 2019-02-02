@@ -1,5 +1,5 @@
 <?php
     session_start();
     session_destroy();
+    header('Location: index.php?deconnexion=true');
 ?>
-<a href='index.php'>Connexion</a>
