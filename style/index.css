@@ -45,3 +45,7 @@ label {
     text-align: center;
     margin-top:70px;
 }
+#delete_account {
+    float: right;
+    margin-top:-3px;
+}

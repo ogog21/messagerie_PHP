@@ -13,7 +13,7 @@ $isPasswordCorrect = password_verify($_POST['motdepasse'], $resultat['motdepasse
 if(!empty($identifiant) AND !empty($_POST['motdepasse'])){ //Si les deux variables existent et sont remplies
     if (!$resultat) //Si l'identifiant ne match pas
     {
-        $ERROR_Msg = 'Mauvais identifiant !';
+        $ERROR_Msg = 'Mauvais identifiant !</br />';
     }
     else //Si l'idetifiant match alors
     {
@@ -58,10 +58,13 @@ if(!empty($identifiant) AND !empty($_POST['motdepasse'])){ //Si les deux variabl
                 <label for='motdepasse'>Mot de passe :</label><input type="password" name="motdepasse"><br /><br />
                 <?php //Début messages info sur l'etat de connexion
                     if(isset($ERROR_Msg)){
-                        echo $ERROR_Msg;
+                        echo "<span style='margin-left:auto;margin-right:auto'>".$ERROR_Msg."</span>";
                     }
                     if(isset($_GET['deconnexion']) == true){
                         echo 'Vous êtes bien déconnecté <br />';
+                    }
+                    if(isset($_GET['delete']) == true){
+                        echo 'Votre compte a bien été supprimé <br />';
                     }//Fin messages info sur l'etat de connexion
                 ?>
                 <input type="submit" value="Connexion" id='connexion'>
@@ -72,6 +75,7 @@ if(!empty($identifiant) AND !empty($_POST['motdepasse'])){ //Si les deux variabl
             } //Si l'utilisateur est connecté on propose une deconnexion ou acces a la messagerie
             if(isset($_SESSION['id']) AND isset($_SESSION['identifiant'])){
                 echo '<a href="deconnexion.php" class="creation_deconnexion">Se déconnecter</a><br />';
+                echo '<a href="delete_account.php" id="delete_account">Supprimer son compte</a><br />';
                 echo '<a href="main_messagerie.php" id="to_messagerie">Acceder à l\'espace de messagerie</a><br />';
             } //Sinon on propose de se creer un compte
             if(empty($_SESSION['id']) AND empty($_SESSION['identifiant'])){
