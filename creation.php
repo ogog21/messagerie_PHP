@@ -12,18 +12,18 @@
                 $req = $bdd->prepare('INSERT INTO compte(identifiant,motdepasse) VALUES(?,?)');
                 if($req){
                     $req->execute(array($identifiant,$crypt_motdepasse));
-                    echo 'Compte créé avec succès !';
+                    $Info_Crea = 'Compte créé avec succès !';
                 }else {
-                    echo 'Probleme de preparation de la requete';
+                    $Info_Crea = 'Probleme de preparation de la requete';
                 }
             }else {
-                echo 'Les mots de passes ne sont pas identique';
+                $Info_Crea = 'Les mots de passes ne sont pas identique';
             }
         }else {
-            echo 'Les identifiants ne sont pas identique';
+            $Info_Crea = 'Les identifiants ne sont pas identique';
         }
     }else {
-        echo 'Remplissez tous les champs <br />';
+        $Info_Crea = 'Remplissez tous les champs <br />';
     }
 
 ?>
@@ -46,6 +46,13 @@
                 <label for='confirm_identifiant'>Confirmer votre identifiant :</label><input type="text" name="confirm_identifiant"><br /><br />
                 <label for='motdepasse'>Mot de passe :</label><input type="password" name="motdepasse"><br /><br />
                 <label for='confirm_motdepasse'>Confirmer votre mot de passe :</label><input type="password" name="confirm_motdepasse"><br /><br />
+                <div style='text-align:center;padding:10px;'>
+                    <?php //Début messages info sur l'etat de connexion
+                        if(isset($Info_Crea)){
+                            echo $Info_Crea;
+                        }//Fin messages info sur l'etat de connexion
+                    ?>
+                </div>
                 <input type="submit" value="Créer mon compte" id='creer_mon_compte'>
             </form>
             <a href='index.php' id='vers_connexion'>Vers Connexion</a>

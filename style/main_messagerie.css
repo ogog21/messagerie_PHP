@@ -1,0 +1,14 @@
+#who_connect {
+    border: 1px solid black;
+    background-color: antiquewhite;
+    display: block;
+    height: 30px;
+}
+#pseudo_connect {
+    float: left;
+    padding: 5px;
+}
+#bouton_desconnect {
+    float: right;
+    padding: 5px;
+}

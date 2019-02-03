@@ -42,14 +42,6 @@ if(!empty($identifiant) AND !empty($_POST['motdepasse'])){ //Si les deux variabl
     <script src="main.js"></script>
 </head>
 <body>
-    <?php //Début messages info sur l'etat de connexion
-        if(isset($ERROR_Msg)){
-            echo $ERROR_Msg;
-        }
-        if(isset($_GET['deconnexion']) == true){
-            echo 'Deconnecté de votre session <br />';
-        }//Fin messages info sur l'etat de connexion
-    ?>
     <div id='main'>
         <h3 style='text-align:center'>Connexion</h3>
         <?php //Si l'utilisateur est deja connecté on montre pas le forumaire de connexion
@@ -64,6 +56,14 @@ if(!empty($identifiant) AND !empty($_POST['motdepasse'])){ //Si les deux variabl
             <form method='POST' action='index.php'>
                 <label for='identifiant'>Identifiant :</label><input type="text" name="identifiant"><br /><br />
                 <label for='motdepasse'>Mot de passe :</label><input type="password" name="motdepasse"><br /><br />
+                <?php //Début messages info sur l'etat de connexion
+                    if(isset($ERROR_Msg)){
+                        echo $ERROR_Msg;
+                    }
+                    if(isset($_GET['deconnexion']) == true){
+                        echo 'Vous êtes bien déconnecté <br />';
+                    }//Fin messages info sur l'etat de connexion
+                ?>
                 <input type="submit" value="Connexion" id='connexion'>
                 <br />
             </form>
@@ -72,7 +72,7 @@ if(!empty($identifiant) AND !empty($_POST['motdepasse'])){ //Si les deux variabl
             } //Si l'utilisateur est connecté on propose une deconnexion ou acces a la messagerie
             if(isset($_SESSION['id']) AND isset($_SESSION['identifiant'])){
                 echo '<a href="deconnexion.php" class="creation_deconnexion">Se déconnecter</a><br />';
-                echo '<a href="messagerie.php" id="to_messagerie">Acceder à la messagerie publique</a><br />';
+                echo '<a href="main_messagerie.php" id="to_messagerie">Acceder à l\'espace de messagerie</a><br />';
             } //Sinon on propose de se creer un compte
             if(empty($_SESSION['id']) AND empty($_SESSION['identifiant'])){
                 echo '<a href="creation.php" class="creation_deconnexion">Se créer un compte</a><br />';
