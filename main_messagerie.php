@@ -27,8 +27,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=projet_chat','root','password');
         ?>
     </div>
     <div style='margin-top:50px;'>
-        <div id="tableau_pour_pseudo_connecte">
-            <h3 id='intitule_tableau'>Liste de pseudos :</h3>
+        <div id="tableau_pseudo_connecte">
+            <h3 id='name_list'>Liste de pseudos :</h3>
             <div id='list_pseudo'>
                 <?php
                     $req = $bdd->query('SELECT identifiant FROM compte');
@@ -37,6 +37,16 @@ $bdd = new PDO('mysql:host=localhost;dbname=projet_chat','root','password');
                     }
                 ?>
             </div>
+        </div>
+        <div id="tableau_nos_messages">
+            <h3 id='name_message'>Vos messages :</h3>
+            <?php
+                if(isset($messages)){
+                    echo "Vous avez <strong>VARIABLE</strong> message(s)";
+                }else{
+                    echo "Vous n'avez pas de message.";
+                }
+            ?>
         </div>
     </div>
     <?php //Si l'utilisateur n'est pas connecté
